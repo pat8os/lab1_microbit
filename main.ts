@@ -1,17 +1,4 @@
-pins.setPull(DigitalPin.P2, PinPullMode.PullUp)
-let door = false
-let strip = neopixel.create(DigitalPin.P1, 1, NeoPixelMode.RGB)
+music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
 basic.forever(function () {
-    if (pins.digitalReadPin(DigitalPin.P2) == 0) {
-        door = !(door)
-        if (door == true) {
-            strip.showColor(neopixel.colors(NeoPixelColors.White))
-            pins.servoWritePin(AnalogPin.P7, 0)
-            basic.pause(1000)
-        } else {
-            pins.servoWritePin(AnalogPin.P7, 180)
-            basic.pause(1000)
-            strip.showColor(neopixel.colors(NeoPixelColors.Black))
-        }
-    }
+    pins.digitalWritePin(DigitalPin.P1, 1)
 })
